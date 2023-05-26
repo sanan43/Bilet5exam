@@ -1,0 +1,77 @@
+﻿
+@model List<Team>
+@{
+    ViewData["Title"] = "Index";
+    int Count = 1;
+}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Inverse table</h4>
+            <p class="card-description">
+                Add class <code>.table-Light</code>
+            </p>
+            <div class="table-responsive pt-3">
+                <table class="table table-light">
+                    <a type="Submit" asp-area="Admin" asp-controller="Teams" asp-action="Create" class="btn btn-outline-success">Create</a>
+                    <thead>
+                        <tr>
+                            <th>
+                                #@Count
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Surname
+                            </th>
+                            <th>
+                                Position
+                            </th>
+                            <th>
+                                JobDescription
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Team item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Count
+                                </td>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    @item.Surname
+                                </td>
+                                <td>
+                                    @item.Position
+                                </td>
+                                <td>
+                                    @item.JobDescription
+                                </td>
+                                <td>
+                                    <img src="~/assets/img/team/@item.ImagePath" />
+                                </td>
+                                <td>
+
+                                    <a type="Submit" asp-area="Admin" asp-controller="Teams" asp-action="Update"  asp-route-id="@item.Id" class="btn btn-outline-warning">Update</a>
+                                    <a type="Submit" asp-area="Admin" asp-controller="Teams" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
